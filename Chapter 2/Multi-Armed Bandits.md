@@ -96,7 +96,7 @@ k개의 행동 각각에는 선택 되었을 때 기대 평균 보상 값이 있
 
 음영으로 표시되는 분포는 아래 그림과 같다.
 
-![Untitled](image/Untitled.png)
+![Untitled](./image/Untitled.png)
 
 ### **Average reward**
 
@@ -110,7 +110,7 @@ k개의 행동 각각에는 선택 되었을 때 기대 평균 보상 값이 있
 
 *ϵ*=0.01의 경우, 최적 행동을 찾는 것은 더 느리지만 결국 *ϵ*=0.1에 비해 두 그래프 모두에 좋은 결과를 보일 것이다. *ϵ*을 시간에 따라 감소시켜 가면서 최상의 결과를 보이는 행동을 찾는 방법도 가능하다.
 
-![Untitled](image/Untitled(1).png)
+![Untitled](./image/Untitled(1).png)
 
 다중 선택 문제를 보상의 분포가 비정상적(non-stationary)이고, 행동 가치가 시간에 따라 변한다고 가정한다면, 비-탐욕적 행동이 탐욕적 행동에 비해 더 큰 가치를 가지지 않는지 확인해야하기 때문에 탐험이 중요 해진다.
 
@@ -132,7 +132,7 @@ $새로운 \ 추정값  \  ← \ 이전 \ 추정값 \  + \ 시간 \  간격의 \
 
 오차는 ‘목푯값’으로 한단계 접근할 때마다 감소한다. 사실 시간 간격의 크기는 시간 단계마다 다른데 시간 간격의 크기를 *α*로 나타내거나 더 일반적으로는 *αt*(*a*)로 표현한다. 아래는 점증적으로 계산한 표본평균과 입실론 그리디 행동 선택을 이용한 완전한 다중 선택 알고리즘의 의사코드이다.
 
-![Untitled](image/Untitled(2).png)
+![Untitled](./image/Untitled(2).png)
 
 - *bandit*(*a*) : 어떤 행동에 대한 보상을 계산하는 함수
 
@@ -171,7 +171,7 @@ $Q_{n+1} \doteq Q_n + \alpha[R_n - Q_n] = (1-\alpha)^nQ_1 +\sum\limits_{i=1}^n \
 
 를 적용 했을 때 결과를 함께 보여준다. 실험 초기에는 탐험이 많은 그리디 방법이 안좋은 결과를 보이지만, 시간이 지남에 따라 탐험Exploration이 줄어들기 때문에 궁극적으로는 더 좋은 성능을 보여준다.
 
-![Untitled](image/Untitled(3).png)
+![Untitled](./image/Untitled(3).png)
 
 하지만 초기 조건에 맞춘다면 비정상적(non-stationary)문제에는 도움이 되지 않는다. 초깃값에 의존하는 것은 아래와 같은 문제가 있다.
 
@@ -204,7 +204,7 @@ $A_t \doteq \underset{a}{arg \ max} \ [ Q_t(a) + c \sqrt{\frac{ln \ t}{N_t(a)}}]
 
 아래의 그림은 마찬가지로 10-Armed Bandit에서 UCB를 적용한 결과이다. 처음을 제외하면 일반적으로 UCB가 성능이 더 좋다.
 
-![Untitled](image/Untitled(4).png)
+![Untitled](./image/Untitled(4).png)
 
 책의 뒷 부분에서 다루는 UCB를 더 일반적인 강화학습 문제로 확장하는 방법은 입실론 그리디 방법보다 어렵다. nonstationary 문제를 다루고 더 큰 상태 공간을 다루기 때문이다.
 
@@ -246,7 +246,7 @@ $H_{t+1}(a) \doteq H_t(a) - \alpha(R_t - \bar{R_t})\pi_t(a)$
 
 에 대해서 결과를 보이는데 비교 대상이 없는 경우에는 성능이 상당히 저하된다.
 
-![Untitled](image/Untitled(5).png)
+![Untitled](./image/Untitled(5).png)
 
 경사도 증가(gradient ascent) 규칙을 따르면, 행동의 선호도 *Ht*(*a*)의 증가량은 선호도 증가가 성능에 미치는 효과와 비례한다.
 
@@ -338,7 +338,7 @@ $= \pi_t(x)(1_{a=x} - \pi_t(a))$
 
 위의 방법 중 가장 좋은 알고리즘을 선택하는 것은 문제가 있는데 모두 파라미터를 가지고 있기 때문이다. 파라미터에 따라 성능이 달라지므로 각 시간 단계에 대한 평균값으로 완전한 학습 곡선(learning curve)를 그린다. U자를 뒤집어 놓은 모양으로 최적의 파라미터는 중간 정도에 위치한다는 것으로 판단할 수 있다. 물론 파라미터의 변화에 따라 얼마나 성능이 변화하는지도 평가해야한다. 다중 선택 문제에서는 전반적으로 UCB가 가장 좋은 성능을 보였다.
 
-![Untitled](image/Untitled(6).png)
+![Untitled](./image/Untitled(6).png)
 
 ### **기틴스 인덱스 ( Gittins index )**
 
