@@ -96,7 +96,7 @@ k개의 행동 각각에는 선택 되었을 때 기대 평균 보상 값이 있
 
 음영으로 표시되는 분포는 아래 그림과 같다.
 
-![Untitled](Reinforced-Learning/image/Untitled.png)
+![Untitled](/image/Untitled.png)
 
 ### **Average reward**
 
