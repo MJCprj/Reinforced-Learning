@@ -100,23 +100,23 @@
 - 이때, 유한 MDP가 갖는 정책의 개수는 유한하므로, 상기의 과정을 '유한하게' 반복함으로써 최적 정책 및 최적 가치 함수로 수렴하는 것이 가능하다.<br>
 ※ 이때, 한 정책에서 다음 정책으로 넘어갈 때 이전 정책의 가치 함수로부터 계산을 시작하므로 정책 평가의 수렴 속도는 상당히 증가하게 된다.
 - 정책 반복의 의사 코드(Psudo code)를 정리하면 다음과 같다.
-> 1. 초기화<br>
-> 모든 $s \in S$에 대해 임의로 $V(s) \in \mathbb{R}$와 $\pi(s)\in A(s)$를 설정<br>
-> 2. 정책 평가<br>
-> 루프:<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\displaystyle{\Delta}$ ← 0<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;모든 $s \in S$에 대하여 루프:<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$v$ ← $V(s)$<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$V(s)$ ← $\sum_{s', r}p(s,' r|s, \pi(s))[r+\gamma V(s')]$<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\Delta$ ← $\max(\Delta, |v-V(s)|)$<br>
-> $\Delta<\theta$를 만족할 때까지(추정의 정밀도를 결정하는 작은 양수)<br>
-> 3. 정책 향상<br>
-> 안정적 정책 ← $true$<br>
-> 모든 $s \in S$에 대해:<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이전 행동 ← $\pi(s)$<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\pi(s)$ ← $\text{argmax}\_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma V(s')]$<br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이전 행동 $\neq$ $\pi(s)$이면, 안정적 정책 ← $false$<br>
-> 안정적 정책이 $true$이면 멈추고, $V\approx v_{\*}$와 $\pi \approx \pi_{*}$를 반환하라. 그렇지 않으면 2번 과정으로 돌아가라.
+  > 1. 초기화<br>
+  > 모든 $s \in S$에 대해 임의로 $V(s) \in \mathbb{R}$와 $\pi(s)\in A(s)$를 설정<br>
+  > 2. 정책 평가<br>
+  > 루프:<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\displaystyle{\Delta}$ ← 0<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;모든 $s \in S$에 대하여 루프:<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$v$ ← $V(s)$<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$V(s)$ ← $\sum_{s', r}p(s,' r|s, \pi(s))[r+\gamma V(s')]$<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\Delta$ ← $\max(\Delta, |v-V(s)|)$<br>
+  > $\Delta<\theta$를 만족할 때까지(추정의 정밀도를 결정하는 작은 양수)<br>
+  > 3. 정책 향상<br>
+  > 안정적 정책 ← $true$<br>
+  > 모든 $s \in S$에 대해:<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이전 행동 ← $\pi(s)$<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\pi(s)$ ← $\text{argmax}\_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma V(s')]$<br>
+  > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이전 행동 $\neq$ $\pi(s)$이면, 안정적 정책 ← $false$<br>
+  > 안정적 정책이 $true$이면 멈추고, $V\approx v_{\*}$와 $\pi \approx \pi_{*}$를 반환하라. 그렇지 않으면 2번 과정으로 돌아가라.
   
 ---
 ### 가치 반복(Value iteration)
