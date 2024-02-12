@@ -23,7 +23,7 @@
 ### 정책 평가(예측)
 1. 정책 평가 개요
    - 임의의 정책 $\pi$에 대해 상태 가치 함수 $v_\pi$를 계산하는 방법
-   > $\displaystyle{v_{\pi}\doteq \mathbb{E}_{\pi}[G_{t}|S_{t}=s]}$<br>
+   > $\displaystyle{v_{\pi}\doteq\mathbb{E}\_{\pi}[G_{t}|S_{t}=s]}$<br>
    = $\displaystyle{\mathbb{E}_{\pi}[R_{t+1}+\gamma G_{t+1}|S_{t+1}=s]}$<br>
    = $\displaystyle{\mathbb{E}_{\pi}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_{t}=s]}$<br>
    = $\displaystyle{\sum_{a}\pi(a|s)\sum_{s', r}p(s', r|s, a)[r+\gamma v_{\pi}(s')]}$
