@@ -38,7 +38,7 @@
    > $v_{k+1}(s)\doteq\displaystyle{\mathbb{E}\_{\pi}[R_{t+1}+\gamma v_{k}(S_{t+1})|S_{t}=s]}$<br>
    = $\displaystyle{\sum_{a}\pi(a|s)\sum_{s', r}p(s', r|s, a)[r+\gamma v_{k}(s')]}$
    - $v_{k}=v_{\pi}$일 경우 벨만 방정식의 등호가 성립하므로 상기 갱신 규칙을 따른다면 $v_{k}=v_{\pi}$의 일정한 값을 가짐
-   - 즉, '반복 정책 평가'란 $v_{\pi}$의 존재를 보증하는 조건하에서 $k$ → $\infin$일 때 일반적으로 수열 $\{v_{k}\}$가 $v_{\pi}$로 수렴하는 알고리즘을 말한다.
+   - 즉, '반복 정책 평가'란 $v_{\pi}$의 존재를 보증하는 조건하에서 $k$ → $\infty$일 때 일반적으로 수열 $\{v_{k}\}$가 $v_{\pi}$로 수렴하는 알고리즘을 말한다.
 3. 기댓값 갱신(Expected update)
    - 근삿값 $v_k$로부터 $v_{k+1}$을 연속적으로 구하기 위해 모든 상태 $s$에게 동일하게 적용하는 작동 방식
    - 현재 평가받고 있는 정책하에서 일어날 수 있는 모든 단일 단계 전이(One-step transition)에 대해 $s$의 이전 가치를 새로운 가치로 대체하는 것
@@ -73,7 +73,7 @@
    - 상기 '정책 향상 정리'는 정책과 그것의 가치 함수가 주어졌을 때 '하나의 상태'에서 어떤 행동을 선택하는 정책의 변화를 어떻게 평가할 것인지에 대한 내용
    - '정책 향상 정리'를 확장하여 '모든 상태'와 선택 가능한 '모든 행동'에 대하여 $q_{\pi}(s, a)$의 측면에서 가장 좋아 보이는 행동을 선택하게 하는 '정책의 변화'를 정책 향상이라 한다.
    - 다시 말해 정책 향상은 기존 정책의 가치 함수에 대하여 '탐욕적'이 되게 함으로써 기존 정책을 능가하는 새로운 정책을 만드는 과정을 말한다.
-   > $\pi'(s)\doteq\displaystyle{\text{argmax}_{a}q_{\pi}(s, a)}$<br>
+   > $\pi'(s)\doteq\displaystyle{\text{argmax}\_{a}q_{\pi}(s, a)}$<br>
    = $\displaystyle{\text{argmax}\_{a}\mathbb{E}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_{t}=s, A_{t}=a]}$<br>
    = $\displaystyle{\text{argmax}\_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma v_{\pi}(s')]}$
    - 만약 새로운 탐욕적 정책 $\pi'$이 기존 정책 $\pi$를 능가하지 못하고 기존 정책과 동일한 수준을 유지한다면 $v_{\pi}=v_{\pi'}$이 되고, 모든 $s\in S$에 대하여 다음 관계가 성립한다.
@@ -100,8 +100,8 @@
 - 이때, 유한 MDP가 갖는 정책의 개수는 유한하므로, 상기의 과정을 '유한하게' 반복함으로써 최적 정책 및 최적 가치 함수로 수렴하는 것이 가능하다.
 ※ 이때, 한 정책에서 다음 정책으로 넘어갈 때 이전 정책의 가치 함수로부터 계산을 시작하므로 정책 평가의 수렴 속도는 상당히 증가하게 된다.
 - 정책 반복의 의사 코드(Psudo code)를 정리하면 다음과 같다.
-> 1. 초기화
-모든 $s \in S$에 대해 임의로 $V(s) \in \mathbb{R}$와 $\pi(s)\in A(s)$를 설정
+> 1. 초기화<br>
+  모든 $s \in S$에 대해 임의로 $V(s) \in \mathbb{R}$와 $\pi(s)\in A(s)$를 설정
   2. 정책 평가
   루프:<br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\displaystyle{\Delta}$ ← 0<br>
@@ -111,10 +111,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\Delta$ ← $\max(\Delta, |v-V(s)|)$<br>
 $\Delta<\theta$를 만족할 때까지(추정의 정밀도를 결정하는 작은 양수)
   3. 정책 향상
-  안정적 정책 ← $true$
-  모든 $s \in S$에 대해:
+  안정적 정책 ← $true$<br>
+  모든 $s \in S$에 대해:<br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이전 행동 ← $\pi(s)$<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\pi(s)$ ← $\argmax_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma V(s')]$<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$\pi(s)$ ← $\text{argmax}\_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma V(s')]$<br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이전 행동 $\neq$ $\pi(s)$이면, 안정적 정책 ← $false$<br>
   안정적 정책이 $true$이면 멈추고, $V\approx v_{\*}$와 $\pi \approx \pi_{*}$를 반환하라. 그렇지 않으면 2번 과정으로 돌아가라.
   
