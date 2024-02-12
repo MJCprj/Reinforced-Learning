@@ -13,7 +13,7 @@
       - 환경의 동역학이 모든 $s \in S$, $a \in A(s)$, $r \in R$, $s' \in S^{+}$에 대한 확률 $p(s', r|s, a)$로 주어진다.
       ※ 에피소딕 문제의 경우 $S^+$는 $S$와 종단 상태의 합이다.
    - 앞서 [마르코프 결정 과정](https://velog.io/@mino0121/Reinforced-Learning-Finite-Markov-Decision-Process)에 대해 다룰 때 확인했듯, 최적 가치 함수 $v_{*}$와 $q_{*}$는 최적 벨만 방정식을 만족한다.
-      - $v_{\*}(s)=\displaystyle{\max_{a}\mathbb{E}[R_{t+1}+\gamma v_{*}(S_{t+1})|S_{t}=s, A_{t}=a]}$
+      - $v_{*}(s)=\displaystyle{\max_{a}\mathbb{E}[R_{t+1}+\gamma v_{*}(S_{t+1})|S_{t}=s, A_{t}=a]}$
       = $\displaystyle{\max_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma v_{*}(s')]}$
       - $\displaystyle{q_{\*}(s, a)=\mathbb{E}[R_{t+1}+\gamma \max_{a'}q_{*}(S_{t+1}, a')|S_{t}=s, A_{t}=a]}$
       =$\displaystyle{\sum_{s', r}p(s', r|s, a)[r+\gamma \max_{a'}q_{*}(s', a')]}$
@@ -23,7 +23,7 @@
 ### 정책 평가(예측)
 1. 정책 평가 개요
    - 임의의 정책 $\pi$에 대해 상태 가치 함수 $v_\pi$를 계산하는 방법
-   $\displaystyle{v_{\pi}\doteq\mathbb{E}_{\pi}[G_{t}|S_{t}=s]}$
+   > $\displaystyle{v_{\pi}\doteq\mathbb{E}_{\pi}[G_{t}|S_{t}=s]}$
    = $\displaystyle{\mathbb{E}_{\pi}[R_{t+1}+\gamma G_{t+1}|S_{t+1}=s]}$
    = $\displaystyle{\mathbb{E}_{\pi}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_{t}=s]}$
    = $\displaystyle{\sum_{a}\pi(a|s)\sum_{s', r}p(s', r|s, a)[r+\gamma v_{\pi}(s')]}$
