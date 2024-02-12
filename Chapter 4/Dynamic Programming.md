@@ -12,7 +12,7 @@
       - 환경의 상태 $S$, 행동 $A$, 보상 $R$의 집합이 유한 집합이다.
       - 환경의 동역학이 모든 $s \in S$, $a \in A(s)$, $r \in R$, $s' \in S^{+}$에 대한 확률 $p(s', r|s, a)$로 주어진다.
       ※ 에피소딕 문제의 경우 $S^+$는 $S$와 종단 상태의 합이다.
-   - 앞서 [마르코프 결정 과정](https://velog.io/@mino0121/Reinforced-Learning-Finite-Markov-Decision-Process)에 대해 다룰 때 확인했듯, 최적 가치 함수 $v_{*}$와 $q_{*}$는 최적 벨만 방정식을 만족한다.
+   - 앞서 [마르코프 결정 과정](https://velog.io/@mino0121/Reinforced-Learning-Finite-Markov-Decision-Process)에 대해 다룰 때 확인했듯, 최적 가치 함수 $v_{\*}$와 $q_{\*}$는 최적 벨만 방정식을 만족한다.
       - $v_{\*}(s)=\displaystyle{\max_{a}\mathbb{E}[R_{t+1}+\gamma v_{\*}(S_{t+1})|S_{t}=s, A_{t}=a]}$<br>
       = $\displaystyle{\max_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma v_{\*}(s')]}$
       - $\displaystyle{q_{\*}(s, a)=\mathbb{E}[R_{t+1}+\gamma \max_{a'}q_{\*}(S_{t+1}, a')|S_{t}=s, A_{t}=a]}$<br>
