@@ -73,9 +73,9 @@
    - 상기 '정책 향상 정리'는 정책과 그것의 가치 함수가 주어졌을 때 '하나의 상태'에서 어떤 행동을 선택하는 정책의 변화를 어떻게 평가할 것인지에 대한 내용
    - '정책 향상 정리'를 확장하여 '모든 상태'와 선택 가능한 '모든 행동'에 대하여 $q_{\pi}(s, a)$의 측면에서 가장 좋아 보이는 행동을 선택하게 하는 '정책의 변화'를 정책 향상이라 한다.
    - 다시 말해 정책 향상은 기존 정책의 가치 함수에 대하여 '탐욕적'이 되게 함으로써 기존 정책을 능가하는 새로운 정책을 만드는 과정을 말한다.
-   > $\pi'(s)\doteq\displaystyle{\argmax_{a}q_{\pi}(s, a)}$<br>
-   = $\displaystyle{\argmax_{a}\mathbb{E}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_{t}=s, A_{t}=a]}$<br>
-   = $\displaystyle{\argmax_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma v_{\pi}(s')]}$
+   > $\pi'(s)\doteq\displaystyle{\text{argmax}_{a}q_{\pi}(s, a)}$<br>
+   = $\displaystyle{\text{argmax}\_{a}\mathbb{E}[R_{t+1}+\gamma v_{\pi}(S_{t+1})|S_{t}=s, A_{t}=a]}$<br>
+   = $\displaystyle{\text{argmax}\_{a}\sum_{s', r}p(s', r|s, a)[r+\gamma v_{\pi}(s')]}$
    - 만약 새로운 탐욕적 정책 $\pi'$이 기존 정책 $\pi$를 능가하지 못하고 기존 정책과 동일한 수준을 유지한다면 $v_{\pi}=v_{\pi'}$이 되고, 모든 $s\in S$에 대하여 다음 관계가 성립한다.
    > $v_{\pi'}(s) = \displaystyle{\max_{a}\mathbb{E}[R_{t+1}+\gamma v_{\pi'}(S_{t+1})|S_{t}=s, A_{t}=a]}$<br>
    = $\displaystyle{\max_{a}\sum_{s', r}p(s' ,r|s, a)[r+\gamma v_{\pi'}(s')]}$
